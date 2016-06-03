@@ -14,7 +14,7 @@ class BandsController < ApplicationController
     if band.save
       redirect_to bands_url
     else
-      flash[:band_errors] = band.errors.full_messages
+      flash[:errors] = band.errors.full_messages
       render :new
     end
   end

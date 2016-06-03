@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :require_login, only: [:index, :show]
+  before_action :require_login, except: [:index, :show]
 
   def index
   end
@@ -15,7 +15,7 @@ class TracksController < ApplicationController
     if @track.save
       redirect_to album_url(@track.album_id)
     else
-      flash[:track_errors] = @track.errors.full_messages
+      flash[:errors] = @track.errors.full_messages
       render :new
     end
   end
@@ -37,12 +37,14 @@ class TracksController < ApplicationController
     if @track.update(track_params)
       redirect_to albums_url
     else
-      flash[:track_errors] = @track.errors.full_messages
+      flash[:errors] = @track.errors.full_messages
       render :edit
     end
   end
 
   def show
+    @track = Track.find(params[:id])
+    render :show
   end
 
 private

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to bands_url
     else
-      flash[:sign_up_errors] = @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to bands_url
     else
-      flash[:sign_up_errors] = @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
       render :edit
     end
   end

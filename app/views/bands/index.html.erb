@@ -10,12 +10,6 @@
         <td>
           <%= button_to "delete", band_url(band.id), method: :delete %>
           </td>
-
-          <!-- <form action="<%= band_url(band.id) %>" method="POST">
-            <%= auth_token %>
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="delete"></form> -->
-
       </tr>
       <% end %>
     </table>

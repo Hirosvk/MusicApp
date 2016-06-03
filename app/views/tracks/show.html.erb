@@ -5,24 +5,29 @@
     <td>title</td>
     <td><%= @track.title %></td>
   </tr>
+
+  <tr>
+    <td>album</td>
+    <td><%= @track.album.title %></td>
+  </tr>
+
   <tr>
     <td>track_number</td>
     <td><%= @track.track_number %></td>
   </tr>
+
   <tr>
     <td>track_type</td>
     <td><%= @track.track_type %></td>
   </tr>
+
   <tr>
     <td>lyrics</td>
     <td><%= @track.lyrics %></td>
   </tr>
 
-  <% @track.notes.each do |note| %>
-  <tr>
-    <td><%= note.user.name %></td>
-    <td><%= note.body %></td>
-  </tr>
-  <% end %>
-
 </table>
+
+<hr>
+<%= render "notes/index", notes: @track.notes%>
+<%= render "notes/new", track: @track %>

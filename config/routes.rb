@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   end
 
   resources :albums, except: [:new] do
-    resources :tracks, only: [:new]
+    resources :tracks, only: [:new, :index]
   end
 
-  resources :tracks, except: [:new]
+  resources :tracks, except: [:new] do
+    resources :notes
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

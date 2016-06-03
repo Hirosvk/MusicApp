@@ -1,5 +1,5 @@
-class Note < ActiveRecord::based
-  validates :user_id, :track_id, :presence => true
+class Note < ActiveRecord::Base
+  validates :user_id, :track_id, :body, :presence => true
 
   belongs_to :user,
     primary_key: :id,

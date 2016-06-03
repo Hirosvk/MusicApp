@@ -1,0 +1,14 @@
+
+
+<ul>
+<% notes.each do |note| %>
+  <li> Author: <%= note.user.name %></li>
+  <li> Note: <%= note.body %></li>
+  <li> Date: <%= note.updated_at %></li>
+  <% if note.user_id == current_user.id %>
+    <%= button_to "delete", track_note_url(note.track_id, note.id), method: :delete %>
+  <% end %>
+  <hr>
+  <br>
+<% end %>
+</ul>

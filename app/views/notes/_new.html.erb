@@ -1,0 +1,11 @@
+<form action="<%= track_notes_url(@track) %>" method="post">
+
+  <%= auth_token %>
+
+  <label for="body">Add <%= current_user.name unless current_user.nil?%>'s note here</label>
+  <textarea name="note[body]" rows="10" cols="40" id="body">
+  </textarea>
+
+  <input type="submit" name= value="">
+
+</form>

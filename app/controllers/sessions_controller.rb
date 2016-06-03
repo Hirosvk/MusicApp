@@ -10,11 +10,14 @@ class SessionsController < ApplicationController
       params[:user][:password]
       )
 
-    if user.save
+    if user.nil?
+      flash[:errors] = "invalid email or password"
+      render :new
+    elsif user.save
       login!(user)
       redirect_to bands_url
     else
-      flash[:login_errors] = user.errors.full_messages
+      flash[:errors] = user.errors.full_messages
       render :new
     end
 

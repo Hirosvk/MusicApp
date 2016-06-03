@@ -1,5 +1,4 @@
 
-<ul>
   <table border="1">
     <tr>
       <td>title</td>
@@ -12,9 +11,10 @@
       <td><%= track.title %></td>
       <td><%= track.track_type %></td>
       <td><%= track.track_number %></td>
+      <td><%= link_to "link", track_url(track.id) %></td>
       <td><%= link_to "edit", edit_track_url(track.id) %></td>
       <td><%= button_to "delete", track_url(track.id), method: :delete %>
     </tr>
     <% end %>
   </table>
-</ul>
+<hr>

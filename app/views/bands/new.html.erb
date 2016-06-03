@@ -1,0 +1,13 @@
+<h1>Create New Band</h1>
+
+<%= flash[:band_errors] %>
+
+<form action="<%= bands_url %>" method="post">
+  <%= auth_token %>
+
+  <label for="name">name</label>
+  <input type="text" name="band[name]" id="name">
+
+  <input type="submit" value="Create Band">
+
+</form>

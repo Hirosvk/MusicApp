@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<header>
+  <% if current_user.nil? %>
+    <p>
+      You are not logged in.
+    </p>
+    <%= button_to "log in", new_session_url, method: :get %>
+    <br>
+
+    <p>
+      Don't have an account?
+    </p>
+
+    <%= button_to "sign-up", new_user_url, method: :get %>
+
+  <% else %>
+    <%= "hello #{current_user.name}" %>
+    <%= button_to "log out", session_url, method: :delete %>
+    <%= link_to "Edit your account", edit_user_url %>
+  <% end %>
+  <hr>
+</header>
+
+<body>
+
+<%= yield %>
+
+</body>
+
+
+<footer>
+  <hr>
+<%= link_to "back to top", bands_url %>
+</footer>
+
+</html>

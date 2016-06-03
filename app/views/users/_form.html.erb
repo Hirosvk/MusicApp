@@ -1,0 +1,25 @@
+
+<% if user.persisted? %>
+  <% verb, button = "patch", "Edit!" %>
+<% else %>
+  <% verb, button = "post", "Create New User!" %>
+<% end %>
+
+<%= flash[:sign_up_errors] unless flash[:sign_up_errors].nil?%>
+
+<form action="<%= user_url %>"  method="post">
+  <input type="hidden" name="_method" value="<%= verb %>">
+  <%= auth_token %>
+
+  <label for="email">email</label>
+  <input type="text" name="user[email]" id="email" value="<%= user.email %>">
+
+  <label for="password">password</label>
+  <input type="text" name="user[password]" id="password">
+
+  <label for="name">name</label>
+  <input type="text" name="user[name]" id="name" value="<%= user.name %>">
+
+  <input type="submit" value="<%= button %>" >
+
+</form>

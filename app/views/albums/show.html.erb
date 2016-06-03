@@ -1,0 +1,7 @@
+<h1>Tracks for this Album</h1>
+
+
+<%= render "tracks/tracks", tracks: @album.tracks %>
+
+<%= link_to "Create New Track for this Album",
+    new_album_track_url(@album.id) %>

@@ -1,0 +1,53 @@
+<% if track.persisted? %>
+  <% action, verb, button = track_url(track), "patch", "Edit!" %>
+<% else %>
+  <% action, verb, button = tracks_url, "post", "Create New Track!" %>
+<% end %>
+
+<%= flash[:track_errors] %>
+
+<form action="<%=  action %>" method="post">
+  <input type="hidden" name="_method" value="<%= verb %>">
+  <%= auth_token %>
+
+  <label for="title">title</label>
+  <input type="text" name="track[title]" id="title" value="<%= track.title %>">
+
+  <br>
+
+  <select name="track[album_id]">
+    <option disabled selected>---Pick Album---</option>
+    <% all_albums.each do |album| %>
+      <option value="<%= album.id %>"
+        <% if track.album_id == album.id %>
+        <%= "selected" %>
+        <% end %>>
+      <%= album.title %>
+      </option>
+    <% end %>
+  </selected>
+  <br>
+
+  <% track_types.each do |ttype| %>
+    <input type="radio" name="track[track_type]"
+    value="<%= ttype %>" id="track_type"
+    <%= "checked" if track.track_type == ttype %>>
+    <label for="track_type"><%= ttype %></label>
+  <% end %>
+
+  <br>
+
+  <label for="track_number">track_number</label>
+  <input type="integer" name="track[track_number]" id="track_number"
+  value="<%= track.track_number %>">
+
+  <br>
+
+  <label for="lyrics">lyrics</label>
+  <textarea name="track[lyrics]" rows="10" cols="40" id="lyrics">
+  <%= track.lyrics %>
+  </textarea>
+
+  <input type="submit" value="<%= button %>">
+
+</form>

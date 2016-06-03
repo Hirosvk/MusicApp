@@ -1,0 +1,20 @@
+
+<ul>
+  <table border="1">
+    <tr>
+      <td>title</td>
+      <td>track_type</td>
+      <td>track_number</td>
+    </tr>
+
+    <% tracks.each do |track| %>
+    <tr>
+      <td><%= track.title %></td>
+      <td><%= track.track_type %></td>
+      <td><%= track.track_number %></td>
+      <td><%= link_to "edit", edit_track_url(track.id) %></td>
+      <td><%= button_to "delete", track_url(track.id), method: :delete %>
+    </tr>
+    <% end %>
+  </table>
+</ul>

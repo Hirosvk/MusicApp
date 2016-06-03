@@ -1,0 +1,44 @@
+<% if album.persisted? %>
+  <% verb, button, action = "patch", "Edit!", album_url(album) %>
+<% else %>
+  <% verb, button, action = "post", "Create New Album", albums_url %>
+<% end %>
+
+
+<%= flash[:album_errors] %>
+
+<form action="<%= action %>" method="post">
+<input type="hidden" name="_method" value="<%= verb %>">
+  <%= auth_token %>
+
+  <label for="title">title</label>
+  <input type="text" name="album[title]" id="title" value="<%= album.title %>">
+
+  <select name="album[band_id]">
+    <option disabled selected> --Pick Band-- </option>
+    <% all_bands.each do |band| %>
+      <option value="<%= band.id %>"
+        <% if album.band_id == band.id %>
+        <%= "selected" %>
+        <% end %>>
+      <%= band.name %></option>
+    <% end %>
+  </select>
+
+  <% album_types.each do |atype| %>
+    <input type="radio"
+      name="album[album_type]"
+      value="<%= atype %>"
+      id="<%= atype %>"
+      <% if album.album_type == atype %>
+      <%= "checked" %>
+      <% end %>>
+    <label for="<%= atype %>"><%= atype %></label>
+  <% end %>
+
+  <label for="release_date">release_date</label>
+  <input type="date" name="album[release_date]" id="release_date" value="<%= album.release_date %>">
+
+  <input type="submit" value="<%= button %>">
+
+</form>

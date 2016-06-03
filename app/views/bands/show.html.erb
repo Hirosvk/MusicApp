@@ -1,0 +1,7 @@
+<h1>This band's album</h1>
+
+<%= render "albums/albums", albums: @band.albums %>
+
+
+<br><br>
+<%= link_to "Add Album for this band", new_band_album_url(@band.id) %>

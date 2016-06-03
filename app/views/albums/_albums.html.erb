@@ -1,0 +1,24 @@
+
+
+<ul>
+    <table border="1">
+      <tr>
+        <td>title</td>
+        <td>band</td>
+        <td>release_date</td>
+        <td>type</td>
+      <tr>
+
+      <% albums.each do |album| %>
+      <tr>
+        <td><%= album.title %></td>
+        <td><%= album.band.name %></td>
+        <td><%= album.release_date %></td>
+        <td><%= album.album_type %></td>
+        <td><%= link_to "link", album_url(album.id) %></td>
+        <td><%= link_to "edit", edit_album_url(album.id) %></td>
+        <td><%= button_to "delete", album_url(album.id), method: :delete %></td>
+      </tr>
+      <% end %>
+    </table>
+</ul>

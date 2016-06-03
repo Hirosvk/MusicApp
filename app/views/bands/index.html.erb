@@ -1,0 +1,26 @@
+<h1>All the bands in database</h1>
+
+<%= flash[:errors] unless flash[:errors].nil? %>
+
+<ul>
+    <table>
+      <% all_bands.each do |band| %>
+      <tr>
+        <td><%= link_to band.name, band_url(band.id) %></td>
+        <td>
+          <%= button_to "delete", band_url(band.id), method: :delete %>
+          </td>
+
+          <!-- <form action="<%= band_url(band.id) %>" method="POST">
+            <%= auth_token %>
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="delete"></form> -->
+
+      </tr>
+      <% end %>
+    </table>
+
+</ul>
+
+<br><br>
+<%= link_to "Add new band", new_band_url %>
